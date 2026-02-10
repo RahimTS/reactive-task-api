@@ -65,6 +65,24 @@ curl -s -X POST $BASE_URL \
   }'
 echo ""
 
+FUNC_URL="http://localhost:8080/functional/tasks"
+
+echo -e "\n============================================"
+echo "  Functional Endpoints"
+echo "============================================"
+
+# 9. Get all tasks (functional)
+echo -e "\n--- 9. GET all tasks (functional) ---"
+curl -s $FUNC_URL
+echo ""
+
+# 10. Create task (functional)
+echo -e "\n--- 10. CREATE task (functional) ---"
+curl -s -X POST $FUNC_URL \
+  -H "Content-Type: application/json" \
+  -d '{"title": "Test", "status": "TODO"}'
+echo ""
+
 echo -e "\n============================================"
 echo "  Tests complete!"
 echo "============================================"
