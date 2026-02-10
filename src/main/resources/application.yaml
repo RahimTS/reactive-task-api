@@ -1,0 +1,11 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: reactive-task-api
+
+logging:
+  level:
+    org.springframework.web: DEBUG
+    reactor.netty: DEBUG
