@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Stats Stream</title>
+</head>
+<body>
+    <h1>Live Task Statistics</h1>
+    <div id="stats"></div>
+    
+    <script>
+        const eventSource = new EventSource('http://localhost:8080/stream/tasks/sse');
+        
+        eventSource.addEventListener('task-stats', (event) => {
+            const stats = JSON.parse(event.data);
+            document.getElementById('stats').innerHTML = `
+                <p>Total: ${stats.total}</p>
+                <p>Done: ${stats.done}</p>
+                <p>In Progress: ${stats.inProgress}</p>
+                <p>Todo: ${stats.todo}</p>
+            `;
+        });
+    </script>
+</body>
+</html>
